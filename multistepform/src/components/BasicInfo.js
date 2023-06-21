@@ -1,5 +1,7 @@
-import React from 'react'
-import {useFormik} from 'formik'
+import React, { useState } from 'react'
+import {useFormik} from 'formik';
+import Calender from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const validate=(values)=>{
     let errors={};
@@ -35,6 +37,7 @@ firstname:'',lastname:'',age:0,fathername:'',mothername:'',gender:null
             console.log(values);
         }
     })
+    const [datevalue,setDate]=useState(new Date());
   return (
     <>
     <div className='col m-3'>
@@ -63,21 +66,7 @@ firstname:'',lastname:'',age:0,fathername:'',mothername:'',gender:null
             formik.touched.mothername && formik.errors.mothername ? <span className='text text-danger'>{formik.errors.mothername}</span> : null
         }
     </div>
-    <div className='col m-3'>
-        <label className='form-label'>Gender<span className='text text-danger text-sm'>*</span></label>
-    <div className="form-check">
-  <input className="form-check-input" id="male" name="male" value={formik.values.gender} type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-  <label className="form-check-label" for="flexRadioDefault1">
-    Male
-  </label>
-</div>
-<div className="form-check">
-  <input className="form-check-input" id="female" name="female" value={formik.values.gender} type="radio" name="flexRadioDefault" id="flexRadioDefault2"  />
-  <label className="form-check-label" for="flexRadioDefault2">
-    Female
-  </label>
-</div>
-    </div>
+  
     </>
   )
 }
